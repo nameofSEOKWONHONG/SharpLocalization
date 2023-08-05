@@ -82,8 +82,8 @@ public class WasmLocalizer : ILocalizer
         var langItems = langJsonItems[CultureInfo.CurrentCulture.Name]();
         foreach (var item in langItems)
         {
-            var req = new HttpRequestMessage(HttpMethod.Get, $"{item.Value}?{versionString}");
-            req.SetBrowserRequestCache(BrowserRequestCache.NoCache);
+            var req = new HttpRequestMessage(HttpMethod.Get, $"{item.Value}?v={versionString}");
+            req.SetBrowserRequestCache(BrowserRequestCache.Default);
             var resp = await _client.SendAsync(req);
             var res = await resp.Content.ReadFromJsonAsync<Dictionary<string, string>>();
             if (res.xIsNotEmpty())
