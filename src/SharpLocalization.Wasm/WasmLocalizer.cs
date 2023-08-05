@@ -1,7 +1,8 @@
 ﻿using System.Globalization;
 using System.Net.Http.Json;
 using eXtensionSharp;
-using SharpLocalization.Abstract;
+using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using SharpLocalization.Abstraction;
 
 namespace SharpLocalization;
 
@@ -82,6 +83,7 @@ public class WasmLocalizer : ILocalizer
         foreach (var item in langItems)
         {
             var req = new HttpRequestMessage(HttpMethod.Get, $"{item.Value}?{versionString}");
+            req.SetBrowserRequestCache(BrowserRequestCache.NoCache);
             var resp = await _client.SendAsync(req);
             var res = await resp.Content.ReadFromJsonAsync<Dictionary<string, string>>();
             if (res.xIsNotEmpty())

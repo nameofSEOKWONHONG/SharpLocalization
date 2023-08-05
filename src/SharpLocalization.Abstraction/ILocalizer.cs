@@ -1,4 +1,4 @@
-﻿namespace SharpLocalization.Abstract;
+﻿namespace SharpLocalization.Abstraction;
 
 public interface ILocalizer
 {

@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using SharpLocalization.Abstract;
+using SharpLocalization.Abstraction;
 
 namespace SharpLocalization;
 
